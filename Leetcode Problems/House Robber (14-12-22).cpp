@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int rob(vector<int>& nums) {
+    int rob(vector<int>& nums)
+    {
         int x = 0, y = 0;
         for (int i = 0; i < nums.size(); ++i) {
             if (i & 1) {
