@@ -1,6 +1,7 @@
 class Solution {
 public:
-    bool wordPattern(string pattern, string s) {
+    bool wordPattern(string pattern, string s) 
+    {
         s+=' ';
         int c=0;
         int p=pattern.size();
