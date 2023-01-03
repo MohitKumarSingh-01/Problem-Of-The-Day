@@ -7,7 +7,8 @@ public:
 
         for(int i=0; i<m; i++){
             for(int j=0; j<n-1; j++){
-                if(strs[j][i] > strs[j+1][i]){
+                if(strs[j][i] > strs[j+1][i])
+                {
                     ans++;
                     break;
                 }
