@@ -1,40 +1,18 @@
 class Solution {
 public:
-    bool areAnagram(string str1, string str2)
-    {
-        sort(str1.begin(), str1.end());
-        for (int i=0;i<str1.size();i++)
-        {
-            if (str1[i]!=str2[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
     vector<int> findAnagrams(string s, string p) {
-        vector<string> v;
-        vector<int> ans;
-        string k="";
-        for(int i=0;i<s.size();i++)
-        {
-            for(int j=i;j<i+p.size() && j<s.size();j++)
-            {
-                k+=s[j];
-            }
-            if(k.size()==p.size())
-            {
-                v.push_back(k);   
-            }
-            k="";
+        if(p.size() > s.size()) return {};
+        vector<int> freq(26, 0), ans, count(26, 0);
+        int n = p.size();
+        for(int i=0;i<n;i++){
+            freq[p[i] - 'a']++;
+            count[s[i] - 'a']++;
         }
-        sort(p.begin(),p.end());
-        for(int i=0;i<v.size();i++)
-        {
-            if(areAnagram(v[i],p))
-            {
-                ans.push_back(i);
-            }
+        if(freq == count) ans.push_back(0);
+        for(int i=n;i<s.size();i++){
+            count[s[i-n] - 'a']--;
+            count[s[i] - 'a']++;
+            if(count == freq) ans.push_back(i - n + 1);  
         }
         return ans;
     }
